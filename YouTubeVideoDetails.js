@@ -17,7 +17,7 @@ enyo.kind({
 			{kind: "YouTubeAPI.YouTubeViewer", name: "vidViewer", showSuggestedVideos: false, style: "width: 640px; height: 360px;"}
 		]},
 		{name: "VideoTimeLine", kind: "YouTubeAPI.TimeLine", maximum: 0, onChange: "timeLineChange"},
-		{kind: "RowGroup", components: [
+		{kind: "RowGroup", style: "overflow:hidden;", components: [
 			{kind: "HFlexBox", components: [
 				{name: "numViews", kind: "Spinn.IconLabel", iconSrc: "YouTubeAPI/images/eye.png", caption: "", style: "width:50%;"},
 				{name: "likeDislike", kind: "HFlexBox", align:"center", pack:"left", style: "width:50%;", components: [
@@ -79,13 +79,13 @@ enyo.kind({
 		}
 	},
 	numDislikesChanged: function() {
-		this.$.numDislikes.setCaption(this.numDislikes);
+		this.$.numDislikes.setCaption(Spinn.Utils.addCommasToNum(this.numDislikes));
 	},
 	numLikesChanged: function() {
-		this.$.numLikes.setCaption(this.numLikes);
+		this.$.numLikes.setCaption(Spinn.Utils.addCommasToNum(this.numLikes));
 	},
 	numViewsChanged: function() {
-		this.$.numViews.setCaption(this.numViews);
+		this.$.numViews.setCaption(Spinn.Utils.addCommasToNum(this.numViews));
 	},
 	titleChanged: function() {
 		this.$.title.setContent(this.title);

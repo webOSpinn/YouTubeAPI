@@ -53,9 +53,9 @@ enyo.kind({
 			var tempDateString = tempDate.toDateString();
 			
 			if(tempDate.getHours() > 12) {
-				tempDateString = tempDateString + " " + (tempDate.getHours() - 12) + ":" + tempDate.getMinutes() + ":" + tempDate.getSeconds() + " PM";
+				tempDateString = tempDateString + " " + Spinn.Utils.zeroPad((tempDate.getHours() - 12),2) + ":" + Spinn.Utils.zeroPad(tempDate.getMinutes(),2) + ":" + Spinn.Utils.zeroPad(tempDate.getSeconds(),2) + " PM";
 			} else {
-				tempDateString = tempDateString + " " + tempDate.getHours() + ":" + tempDate.getMinutes() + ":" + tempDate.getSeconds() + " AM";
+				tempDateString = tempDateString + " " + Spinn.Utils.zeroPad(tempDate.getHours(),2) + ":" + Spinn.Utils.zeroPad(tempDate.getMinutes(),2) + ":" + Spinn.Utils.zeroPad(tempDate.getSeconds(),2) + " AM";
 			}
 			
 			this.$.dateUploaded.setCaption(tempDateString);

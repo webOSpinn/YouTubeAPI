@@ -1,6 +1,6 @@
 enyo.depends(
 	"YouTubeAPI/TimeLine/depends.js",
-	"YouTubeAPI/YouTubeApiV2.js",
-	"YouTubeAPI/YouTubeViewer.js",
-	"YouTubeAPI/YouTubeVideoDetails.js"
+	"YouTubeAPI/javascripts/YouTubeApiV2.js",
+	"YouTubeAPI/javascripts/YouTubeViewer.js",
+	"YouTubeAPI/javascripts/YouTubeVideoDetails.js"
 );

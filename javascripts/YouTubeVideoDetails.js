@@ -100,8 +100,7 @@ enyo.kind({
 			var tempUrl = "http://www.youtube.com/watch?v=" + this.getVideoId()
 			
 			if(this.$.VideoTimeLine.getPosition() > 0) {
-				var time = this.$.VideoTimeLine.getTime();
-				tempUrl = tempUrl + "#t=" + time.h + "h" + time.m + "m" + time.s + "s";
+				tempUrl = tempUrl + "#t=" + this.$.VideoTimeLine.getPosition() + "s";
 			}
 			
 			return tempUrl; 

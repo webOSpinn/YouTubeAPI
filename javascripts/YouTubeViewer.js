@@ -35,7 +35,8 @@ enyo.kind({
 		this.renderVideo();
 		//This reload must be here to get the time to take
 		//If this is added in renderVideo() switching videos no longer works
-		try { this.$.WV.reloadPage(); } catch (err) { }
+		//Try catch is needed to debug on computer
+		try { this.$.WV.reloadPage(); } catch (err) { this.$.WV.refresh(); }
 	},
 	renderVideo: function() {
 		var vidUrl = ''

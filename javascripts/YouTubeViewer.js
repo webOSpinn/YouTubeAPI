@@ -29,13 +29,8 @@ enyo.kind({
 	},
 	startTimeInSecondsChanged: function() {
 		this.renderVideo();
-		//This reload must be here to get the time to take
-		//If this is added in renderVideo() switching videos no longer works
-		//Try catch is needed to debug on computer
-		//try { this.$.WV.reloadPage(); } catch (err) { this.$.WV.refresh(); }
 	},
 	renderVideo: function() {
-		//this.destroyComponents();
 		var vidUrl = '';
 		var paramJoin = '?'; //The first parameter must be preceded by ? then each following by &
 		
@@ -64,8 +59,6 @@ enyo.kind({
 			}
 		}
 		console.log("YouTubeViewer URL: " + vidUrl);
-		//this.createComponent({ kind: "WebView", name: "WV", style: "width: 100%; height: 100%;", url:vidUrl  });
-		//this.render();
 		this.$.WV.setUrl(vidUrl);
 	}
 })

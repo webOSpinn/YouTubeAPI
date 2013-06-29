@@ -9,11 +9,7 @@ enyo.kind({
 		startTimeInSeconds: 0
 	},
 	components:[
-		{
-			kind: "WebView",
-			name: "WV",
-			style: "width: 100%; height: 100%;"
-		}
+		{ kind: "WebView", name: "WV", style: "width: 100%; height: 100%;" }
 	],
 	create: function() {
 		this.inherited(arguments);
@@ -36,10 +32,13 @@ enyo.kind({
 		//This reload must be here to get the time to take
 		//If this is added in renderVideo() switching videos no longer works
 		//Try catch is needed to debug on computer
-		try { this.$.WV.reloadPage(); } catch (err) { this.$.WV.refresh(); }
+		//try { this.$.WV.reloadPage(); } catch (err) { this.$.WV.refresh(); }
 	},
 	renderVideo: function() {
-		var vidUrl = ''
+		//this.destroyComponents();
+		var vidUrl = '';
+		var paramJoin = '?'; //The first parameter must be preceded by ? then each following by &
+		
 		//Make sure that there is a video ID supplied
 		if(Spinn.Utils.exists(this.videoId) 
 			&& (enyo.string.trim(this.videoId) != "")) {
@@ -54,15 +53,19 @@ enyo.kind({
 			}
 			vidUrl = vidUrl + '.com/embed/' + this.getVideoId()
 			if(this.showSuggestedVideos == false){
-				vidUrl = vidUrl + '?rel=0'
+				vidUrl = vidUrl + paramJoin + 'rel=0';
+				paramJoin = '&';
 			}
 			if(Spinn.Utils.exists(this.startTimeInSeconds) 
 				&& Spinn.Utils.isInt(this.startTimeInSeconds)
 				&& this.startTimeInSeconds > 0) {
-				vidUrl = vidUrl + '#t=' + this.startTimeInSeconds + 's'
+				vidUrl = vidUrl + paramJoin + 'start=' + this.startTimeInSeconds + '&autoplay=1';
+				paramJoin = '&';
 			}
 		}
 		console.log("YouTubeViewer URL: " + vidUrl);
+		//this.createComponent({ kind: "WebView", name: "WV", style: "width: 100%; height: 100%;", url:vidUrl  });
+		//this.render();
 		this.$.WV.setUrl(vidUrl);
 	}
 })
